@@ -1,0 +1,420 @@
+Perfect 👍
+I will give you **all APIs one by one**, in **very simple format**, easy to understand.
+
+I’ll show for each API:
+
+* ✅ What it does
+* 📥 Input (what you send)
+* 📤 Output (what you get)
+* 🗄 Table used
+
+---
+
+# 🔐 1. Register API
+
+### ✅ What it does:
+
+Creates new user (member or admin)
+
+### 📥 URL:
+
+`POST /api/register.php`
+
+### 📥 Input:
+
+* name
+* email
+* phone
+* password
+* role (admin/member)
+* flat_number
+
+### 📤 Output:
+
+```json
+{
+  "status": "success",
+  "message": "User registered successfully"
+}
+```
+
+🗄 Table: `users`
+
+---
+
+# 🔐 2. Login API
+
+### ✅ What it does:
+
+Checks email & password
+
+### 📥 URL:
+
+`POST /api/login.php`
+
+### 📥 Input:
+
+* email
+* password
+
+### 📤 Output:
+
+```json
+{
+  "status": "success",
+  "user_id": "1",
+  "role": "member"
+}
+```
+
+🗄 Table: `users`
+
+---
+
+# 👤 3. Get Profile
+
+### ✅ What it does:
+
+Gets logged-in user details
+
+### 📥 URL:
+
+`GET /api/get_profile.php?user_id=1`
+
+### 📤 Output:
+
+```json
+{
+  "name": "Rahul",
+  "email": "rahul@gmail.com",
+  "phone": "9876543210",
+  "flat_number": "A-101"
+}
+```
+
+🗄 Table: `users`
+
+---
+
+# 👥 4. Add Member (Admin)
+
+### ✅ What it does:
+
+Admin adds society member
+
+### 📥 URL:
+
+`POST /api/add_member.php`
+
+### 📥 Input:
+
+* name
+* email
+* phone
+* flat_number
+* password
+
+### 📤 Output:
+
+```json
+{
+  "status": "success"
+}
+```
+
+🗄 Table: `users`
+
+---
+
+# 👥 5. Get All Members
+
+### ✅ What it does:
+
+Admin sees all members
+
+### 📥 URL:
+
+`GET /api/get_members.php`
+
+### 📤 Output:
+
+```json
+[
+  {
+    "id": "1",
+    "name": "Rahul",
+    "flat_number": "A-101"
+  }
+]
+```
+
+🗄 Table: `users`
+
+---
+
+# 🛠 6. Add Complaint
+
+### ✅ What it does:
+
+Member submits complaint
+
+### 📥 URL:
+
+`POST /api/add_complaint.php`
+
+### 📥 Input:
+
+* user_id
+* title
+* description
+
+### 📤 Output:
+
+```json
+{
+  "status": "success",
+  "message": "Complaint submitted"
+}
+```
+
+🗄 Table: `complaints`
+
+---
+
+# 🛠 7. Get My Complaints
+
+### ✅ What it does:
+
+Member sees own complaints
+
+### 📥 URL:
+
+`GET /api/get_my_complaints.php?user_id=1`
+
+### 📤 Output:
+
+```json
+[
+  {
+    "title": "Water leakage",
+    "status": "pending"
+  }
+]
+```
+
+🗄 Table: `complaints`
+
+---
+
+# 🛠 8. Update Complaint Status (Admin)
+
+### ✅ What it does:
+
+Admin changes complaint status
+
+### 📥 URL:
+
+`POST /api/update_complaint_status.php`
+
+### 📥 Input:
+
+* complaint_id
+* status (pending/resolved)
+
+### 📤 Output:
+
+```json
+{
+  "status": "updated"
+}
+```
+
+🗄 Table: `complaints`
+
+---
+
+# 📢 9. Add Notice (Admin)
+
+### ✅ What it does:
+
+Admin posts notice
+
+### 📥 URL:
+
+`POST /api/add_notice.php`
+
+### 📥 Input:
+
+* title
+* description
+
+### 📤 Output:
+
+```json
+{
+  "status": "success"
+}
+```
+
+🗄 Table: `notices`
+
+---
+
+# 📢 10. Get Notices
+
+### ✅ What it does:
+
+Members see all notices
+
+### 📥 URL:
+
+`GET /api/get_notices.php`
+
+### 📤 Output:
+
+```json
+[
+  {
+    "title": "Water Supply Off",
+    "description": "Tomorrow 10AM to 2PM"
+  }
+]
+```
+
+🗄 Table: `notices`
+
+---
+
+# 🎉 11. Add Event (Admin)
+
+### ✅ What it does:
+
+Admin creates event
+
+### 📥 URL:
+
+`POST /api/add_event.php`
+
+### 📥 Input:
+
+* event_name
+* description
+* date
+
+### 📤 Output:
+
+```json
+{
+  "status": "success"
+}
+```
+
+🗄 Table: `events`
+
+---
+
+# 🎉 12. Get Events
+
+### ✅ What it does:
+
+Members view events
+
+### 📥 URL:
+
+`GET /api/get_events.php`
+
+### 📤 Output:
+
+```json
+[
+  {
+    "event_name": "Diwali Celebration",
+    "date": "2026-11-05"
+  }
+]
+```
+
+🗄 Table: `events`
+
+---
+
+# 💰 13. Create Payment
+
+### ✅ What it does:
+
+Member pays maintenance
+
+### 📥 URL:
+
+`POST /api/create_payment.php`
+
+### 📥 Input:
+
+* user_id
+* amount
+
+### 📤 Output:
+
+```json
+{
+  "status": "payment_recorded"
+}
+```
+
+🗄 Table: `payments`
+
+---
+
+# 💰 14. Get My Payments
+
+### ✅ What it does:
+
+Member sees payment history
+
+### 📥 URL:
+
+`GET /api/get_my_payments.php?user_id=1`
+
+### 📤 Output:
+
+```json
+[
+  {
+    "amount": "2000",
+    "status": "paid"
+  }
+]
+```
+
+🗄 Table: `payments`
+
+---
+
+# 🚨 15. Emergency Contacts
+
+### Add Contact (Admin)
+
+`POST /api/add_emergency_contact.php`
+
+### Get Contacts
+
+`GET /api/get_emergency_contacts.php`
+
+🗄 Table: `emergency_contacts`
+
+---
+
+# 🎯 That’s Your Full Simple API List
+
+For college project, these 15 APIs are more than enough ✅
+
+---
+
+If you want next, I can give you:
+
+* ✅ Complete MySQL table structure
+* ✅ Folder structure for backend
+* ✅ One full working API example with database connection
+* ✅ ER diagram explanation
+
+Tell me what you want next 👌
